@@ -35,10 +35,16 @@
             font-size: 16px;
             color: #cccccc;
         }
+        .error-message {
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="video-container">
+    <div class="video-container" id="video-container">
         <video id="video-player" controls></video>
         <div class="video-title" id="video-title"></div>
         <div class="video-description" id="video-description"></div>
@@ -50,22 +56,30 @@
             const videoId = urlParams.get('v');
 
             if (!videoId) {
-                document.body.innerHTML = '<h1 style="color: white;">Invalid video ID</h1>';
+                showError('Invalid video ID');
                 return;
             }
 
-            const response = await fetch('videos.json');
-            const videoMetadata = await response.json();
-            const video = videoMetadata.find(v => v.id === videoId);
+            try {
+                const response = await fetch('videos.json');
+                const videoMetadata = await response.json();
+                const video = videoMetadata.find(v => v.id === videoId);
 
-            if (!video) {
-                document.body.innerHTML = '<h1 style="color: white;">Video not found</h1>';
-                return;
+                if (!video) {
+                    showError('Video not found');
+                    return;
+                }
+
+                document.getElementById('video-player').src = `https://media.generalgoldyt.com/videos/${video.id}.webm`;
+                document.getElementById('video-title').textContent = video.title;
+                document.getElementById('video-description').textContent = video.description;
+            } catch (error) {
+                showError('Failed to load video details');
             }
+        }
 
-            document.getElementById('video-player').src = `https://media.generalgoldyt.com/videos/${video.id}.webm`;
-            document.getElementById('video-title').textContent = video.title;
-            document.getElementById('video-description').textContent = video.description;
+        function showError(message) {
+            document.getElementById('video-container').innerHTML = `<div class="error-message">${message}</div>`;
         }
 
         document.addEventListener('DOMContentLoaded', loadVideoDetails);
