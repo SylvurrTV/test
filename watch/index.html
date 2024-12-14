@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClawTube</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #060c21;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .video-container {
+            text-align: center;
+        }
+        video {
+            max-width: 90%;
+            height: auto;
+            border: 2px solid white;
+            border-radius: 8px;
+        }
+        .video-title {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .video-description {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="video-player" controls></video>
+        <div class="video-title" id="video-title"></div>
+        <div class="video-description" id="video-description"></div>
+    </div>
+
+    <script>
+        async function loadVideoDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const videoId = urlParams.get('v');
+
+            if (!videoId) {
+                document.body.innerHTML = '<h1 style="color: white;">Invalid video ID</h1>';
+                return;
+            }
+
+            const response = await fetch('videos.json');
+            const videoMetadata = await response.json();
+            const video = videoMetadata.find(v => v.id === videoId);
+
+            if (!video) {
+                document.body.innerHTML = '<h1 style="color: white;">Video not found</h1>';
+                return;
+            }
+
+            document.getElementById('video-player').src = `https://media.generalgoldyt.com/videos/${video.id}.webm`;
+            document.getElementById('video-title').textContent = video.title;
+            document.getElementById('video-description').textContent = video.description;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadVideoDetails);
+    </script>
+</body>
+</html>
