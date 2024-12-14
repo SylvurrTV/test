@@ -49,7 +49,7 @@
         .video-container {
             display: flex;
             margin-top: 60px; /* Adjusted for the reduced header margin */
-            justify-content: space-between;
+            justify-content: flex-start; /* Align video to the left */
             width: 100%;
             max-width: 1200px;
             padding: 0 10px;
@@ -59,7 +59,7 @@
 
         .video-player {
             width: 100%;
-            max-width: 720px; /* Ensures the video does not go off screen */
+            max-width: 960px; /* Ensures the video stays in 16:9 aspect ratio */
             height: auto;
             border: 2px solid white;
             border-radius: 8px;
