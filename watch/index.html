@@ -23,7 +23,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 10px 20px; /* Reduced the top margin */
             background-color: #1a2238;
             position: fixed;
             top: 0;
@@ -48,22 +48,24 @@
 
         .video-container {
             display: flex;
-            margin-top: 80px; /* Leave space for header */
+            margin-top: 60px; /* Adjusted for the reduced header margin */
             justify-content: space-between;
             width: 100%;
             max-width: 1200px;
+            padding: 0 10px;
+            box-sizing: border-box;
         }
 
         .video-player {
-            width: 70%;
+            width: 100%;
+            max-width: 720px; /* Ensures the video does not go off screen */
             height: auto;
-            max-width: 800px;
             border: 2px solid white;
             border-radius: 8px;
         }
 
         .video-details {
-            width: 70%;
+            width: 100%;
             margin-top: 20px;
             font-size: 1.2em;
         }
