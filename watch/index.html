@@ -54,6 +54,7 @@
             max-width: 1200px;
             padding: 0 10px;
             box-sizing: border-box;
+            flex-wrap: wrap; /* Added for responsive layout */
         }
 
         .video-player {
@@ -62,6 +63,7 @@
             height: auto;
             border: 2px solid white;
             border-radius: 8px;
+            margin-bottom: 20px;
         }
 
         .video-details {
@@ -82,7 +84,7 @@
         }
 
         .recommended-videos {
-            width: 28%;
+            width: 100%;
             margin-top: 20px;
             overflow-y: auto;
             max-height: 85vh;
@@ -119,6 +121,15 @@
         .recommended-video .duration {
             font-size: 12px;
             color: #888;
+        }
+
+        @media (min-width: 768px) {
+            .video-container {
+                flex-wrap: nowrap;
+            }
+            .recommended-videos {
+                width: 28%; /* Adjust side video section */
+            }
         }
     </style>
 </head>
