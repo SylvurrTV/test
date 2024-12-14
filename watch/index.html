@@ -61,7 +61,8 @@
             }
 
             try {
-                const response = await fetch('videos.json');
+                // Fetching videos.json from the root directory
+                const response = await fetch('/videos.json');
                 const videoMetadata = await response.json();
                 console.log('Fetched video metadata:', videoMetadata);  // Debugging output
                 const video = videoMetadata.find(v => v.id.trim() === videoId.trim());
