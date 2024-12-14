@@ -63,9 +63,11 @@
             try {
                 const response = await fetch('videos.json');
                 const videoMetadata = await response.json();
-                const video = videoMetadata.find(v => v.id === videoId);
+                console.log('Fetched video metadata:', videoMetadata);  // Debugging output
+                const video = videoMetadata.find(v => v.id.trim() === videoId.trim());
 
                 if (!video) {
+                    console.log(`Video with ID "${videoId}" not found`);  // Debugging output
                     showError('Video not found');
                     return;
                 }
@@ -74,6 +76,7 @@
                 document.getElementById('video-title').textContent = video.title;
                 document.getElementById('video-description').textContent = video.description;
             } catch (error) {
+                console.error('Error loading video details:', error);  // Debugging output
                 showError('Failed to load video details');
             }
         }
