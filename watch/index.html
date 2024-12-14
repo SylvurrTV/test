@@ -138,7 +138,7 @@
                 document.getElementById('video-description').textContent = video.description;
 
                 // Load related videos
-                loadRelatedVideos(videoMetadata);
+                loadRelatedVideos(videoId, videoMetadata);  // Pass videoId to related videos function
             } catch (error) {
                 console.error('Error loading video details:', error);  // Debugging output
                 showError('Failed to load video details');
@@ -149,9 +149,9 @@
             document.body.innerHTML = `<div class="error-message">${message}</div>`;
         }
 
-        function loadRelatedVideos(videoMetadata) {
+        function loadRelatedVideos(currentVideoId, videoMetadata) {
             const relatedVideosContainer = document.getElementById('related-videos');
-            const relatedVideos = videoMetadata.filter(v => v.id !== videoId).slice(0, 5);  // Exclude the current video
+            const relatedVideos = videoMetadata.filter(v => v.id !== currentVideoId).slice(0, 5);  // Exclude the current video
 
             relatedVideos.forEach(video => {
                 const relatedVideoElement = document.createElement('div');
