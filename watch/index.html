@@ -21,7 +21,7 @@
         .header {
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* Align to left */
             align-items: center;
             padding: 10px 20px; /* Reduced the top margin */
             background-color: #1a2238;
@@ -46,24 +46,36 @@
             flex-grow: 1;
         }
 
+        /* Main content area: video player and recommended videos */
         .video-container {
             display: flex;
             margin-top: 60px; /* Adjusted for the reduced header margin */
             justify-content: flex-start; /* Align video to the left */
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             padding: 0 10px;
             box-sizing: border-box;
-            flex-wrap: wrap; /* Added for responsive layout */
+            flex-wrap: wrap; /* Allow wrapping for responsive layout */
         }
 
         .video-player {
             width: 100%;
-            max-width: 960px; /* Ensures the video stays in 16:9 aspect ratio */
-            height: auto;
-            border: 2px solid white;
+            max-width: 960px; /* Ensure the video width does not go off screen */
+            height: 0;
+            padding-bottom: 56.25%; /* Maintain 16:9 aspect ratio (height is 56.25% of width) */
+            position: relative;
+            background-color: black;
             border-radius: 8px;
-            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        /* Video embed iframe style */
+        .video-player video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
         }
 
         .video-details {
@@ -144,7 +156,11 @@
     <div class="video-container">
         <!-- Main video player -->
         <div class="video-player">
-            <video id="video-player" controls></video>
+            <video id="video-player" controls>
+                <!-- Video source will be set dynamically -->
+                <source id="video-source" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
         <!-- Video details and recommended videos -->
@@ -177,7 +193,12 @@
                 return;
             }
 
-            document.getElementById('video-player').src = `https://media.generalgoldyt.com/videos/${video.id}.webm`;
+            // Dynamically set the video source
+            const videoElement = document.getElementById('video-player');
+            document.getElementById('video-source').src = video.url;
+            videoElement.load(); // Make sure it reloads the video
+
+            // Set video details
             document.getElementById('video-title').textContent = video.title;
             document.getElementById('video-description').textContent = video.description;
 
