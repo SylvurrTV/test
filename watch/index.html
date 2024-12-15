@@ -23,7 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 10px;
             background-color: #1a2238;
             position: fixed;
             top: 0;
@@ -32,30 +32,30 @@
         }
 
         .header .logo {
-            width: 60px; /* Slightly bigger logo */
-            height: 60px;
+            width: 40px; /* Smaller logo */
+            height: 40px;
             background-image: url('/watch/icon.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            margin-right: 15px;
+            margin-right: 10px;
         }
 
         .header .title {
-            font-size: 3em; /* Made the title bigger */
+            font-size: 1.5em; /* Smaller title */
             color: white;
-            flex-grow: 1;
             text-align: center;
+            flex-grow: 1;
         }
 
         /* Main video container on the left */
         .main-video-container {
             flex: 3;
-            margin-top: 100px; /* Increased margin to clear header */
-            margin-right: 30px;
+            margin-top: 60px; /* Smaller margin to fit video near the top */
+            margin-right: 20px;
             text-align: left;
             width: 100%;
-            max-width: 1280px; /* Made the video container wider */
+            max-width: 1280px;
         }
 
         .video-container {
@@ -65,18 +65,18 @@
         video {
             width: 100%;
             height: auto;
-            border: 4px solid white; /* Made the border thicker */
-            border-radius: 12px;
+            border: 4px solid white;
+            border-radius: 8px;
         }
 
         .video-title {
-            margin-top: 25px;
-            font-size: 40px; /* Increased title size */
+            margin-top: 15px;
+            font-size: 20px; /* Much smaller title */
         }
 
         .video-description {
-            margin-top: 20px;
-            font-size: 22px; /* Increased description size */
+            margin-top: 10px;
+            font-size: 12px; /* Much smaller description */
             color: #cccccc;
         }
 
@@ -85,12 +85,12 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Increased gap between related videos */
+            gap: 15px;
             max-height: 90vh;
             overflow-y: auto;
             width: 100%;
-            max-width: 300px; /* Made the related videos container smaller */
-            margin-top: 100px; /* Made sure it doesn't overlap with main content */
+            max-width: 300px;
+            margin-top: 60px; /* Adjusted margin for consistency */
         }
 
         .related-video {
@@ -100,13 +100,13 @@
         }
 
         .related-video img {
-            width: 100%; /* Full width of the container */
+            width: 100%;
             height: 0;
-            padding-top: 56.25%; /* 16:9 Aspect ratio */
+            padding-top: 56.25%; /* 16:9 aspect ratio */
             background-size: cover;
             background-position: center;
-            margin-right: 15px;
-            border-radius: 12px;
+            margin-right: 10px;
+            border-radius: 8px;
         }
 
         .related-video .info {
@@ -117,12 +117,12 @@
 
         .related-video h4 {
             margin: 0;
-            font-size: 18px; /* Made the title of related videos smaller */
+            font-size: 14px; /* Smaller related video title */
         }
 
         .related-video p {
             margin: 5px 0 0 0;
-            font-size: 14px; /* Decreased font size */
+            font-size: 10px; /* Smaller related video description */
             color: #cccccc;
         }
 
