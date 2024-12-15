@@ -11,9 +11,8 @@
             background-color: #060c21;
             color: white;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            justify-content: center;
+            padding: 10px; /* Reduced padding for a more compact layout */
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -39,23 +38,24 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            margin-right: 15px; /* Space between logo and title */
+            margin-right: 15px;
         }
 
         .header .title {
-            font-size: 2.5em; /* Increased font size */
-            text-align: center;
-            flex-grow: 1;
+            font-size: 2.5em;
             color: white;
+            flex-grow: 1;
+            text-align: center;
         }
 
-        /* Main video container */
+        /* Main video container on the left */
         .main-video-container {
             flex: 2;
             margin-top: 80px; /* Added margin to avoid overlap with header */
-            text-align: center;
+            margin-right: 20px; /* Adjusted margin for some spacing */
+            text-align: left; /* Left-aligned content */
             width: 100%;
-            max-width: 960px;
+            max-width: 720px; /* Reduced max-width */
         }
 
         .video-container {
@@ -65,7 +65,7 @@
         video {
             width: 100%;
             height: auto;
-            border: 3px solid white; /* Increased border thickness */
+            border: 3px solid white;
             border-radius: 10px;
         }
 
@@ -80,17 +80,16 @@
             color: #cccccc;
         }
 
-        /* Related videos container */
+        /* Related videos container on the right */
         .related-videos {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Increased gap between related videos */
+            gap: 20px;
             max-height: 90vh;
             overflow-y: auto;
             width: 100%;
-            max-width: 400px;
-            margin-left: 20px;
+            max-width: 300px; /* Adjusted max-width for related videos */
         }
 
         .related-video {
@@ -99,7 +98,7 @@
         }
 
         .related-video img {
-            width: 150px; /* Increased thumbnail size */
+            width: 150px;
             height: 100px;
             margin-right: 15px;
             border-radius: 10px;
@@ -113,12 +112,12 @@
 
         .related-video h4 {
             margin: 0;
-            font-size: 18px; /* Increased font size */
+            font-size: 18px;
         }
 
         .related-video p {
             margin: 5px 0 0 0;
-            font-size: 14px; /* Increased font size */
+            font-size: 14px;
             color: #cccccc;
         }
 
