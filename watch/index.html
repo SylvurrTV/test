@@ -13,17 +13,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
+            padding: 20px;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Top margin area for the logo and title */
+        /* Header containing the logo and title */
         .header {
             width: 100%;
             display: flex;
-            justify-content: flex-start; /* Align to left */
+            justify-content: center;
             align-items: center;
-            padding: 10px 20px; /* Reduced the top margin */
+            padding: 20px;
             background-color: #1a2238;
             position: fixed;
             top: 0;
@@ -32,146 +33,119 @@
         }
 
         .header .logo {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background-image: url('/watch/icon.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+            margin-right: 15px; /* Space between logo and title */
         }
 
         .header .title {
-            font-size: 2em;
+            font-size: 2.5em; /* Increased font size */
             text-align: center;
             flex-grow: 1;
+            color: white;
         }
 
-        /* Main content area: video player and recommended videos */
+        /* Main video container */
+        .main-video-container {
+            flex: 2;
+            margin-top: 80px; /* Added margin to avoid overlap with header */
+            text-align: center;
+            width: 100%;
+            max-width: 960px;
+        }
+
         .video-container {
-            display: flex;
-            margin-top: 60px; /* Adjusted for the reduced header margin */
-            justify-content: flex-start; /* Align video to the left */
             width: 100%;
-            max-width: 1400px;
-            padding: 0 10px;
-            box-sizing: border-box;
-            flex-wrap: wrap; /* Allow wrapping for responsive layout */
         }
 
-        .video-player {
+        video {
             width: 100%;
-            max-width: 960px; /* Ensure the video width does not go off screen */
-            height: 0;
-            padding-bottom: 56.25%; /* Maintain 16:9 aspect ratio (height is 56.25% of width) */
-            position: relative;
-            background-color: black;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        /* Video embed iframe style */
-        .video-player video {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        .video-details {
-            width: 100%;
-            margin-top: 20px;
-            font-size: 1.2em;
+            height: auto;
+            border: 3px solid white; /* Increased border thickness */
+            border-radius: 10px;
         }
 
         .video-title {
-            margin-bottom: 10px;
-            font-size: 24px;
+            margin-top: 20px;
+            font-size: 30px; /* Increased font size */
         }
 
         .video-description {
             margin-top: 10px;
-            font-size: 16px;
+            font-size: 18px; /* Increased font size */
             color: #cccccc;
         }
 
-        .recommended-videos {
-            width: 100%;
-            margin-top: 20px;
+        /* Related videos container */
+        .related-videos {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Increased gap between related videos */
+            max-height: 90vh;
             overflow-y: auto;
-            max-height: 85vh;
+            width: 100%;
+            max-width: 400px;
+            margin-left: 20px;
         }
 
-        .recommended-video {
-            background: #1a2238;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            padding: 10px;
+        .related-video {
+            display: flex;
             cursor: pointer;
         }
 
-        .recommended-video img {
-            width: 100%;
-            border-radius: 8px;
+        .related-video img {
+            width: 150px; /* Increased thumbnail size */
+            height: 100px;
+            margin-right: 15px;
+            border-radius: 10px;
         }
 
-        .recommended-video .info {
-            padding-top: 10px;
+        .related-video .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .recommended-video .info h3 {
+        .related-video h4 {
             margin: 0;
-            font-size: 18px;
+            font-size: 18px; /* Increased font size */
         }
 
-        .recommended-video .info p {
-            margin: 0;
-            font-size: 14px;
+        .related-video p {
+            margin: 5px 0 0 0;
+            font-size: 14px; /* Increased font size */
             color: #cccccc;
         }
 
-        .recommended-video .duration {
-            font-size: 12px;
-            color: #888;
-        }
-
-        @media (min-width: 768px) {
-            .video-container {
-                flex-wrap: nowrap;
-            }
-            .recommended-videos {
-                width: 28%; /* Adjust side video section */
-            }
+        .error-message {
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Header with logo and title -->
     <div class="header">
         <div class="logo"></div>
         <div class="title">ClawTube</div>
-        <div></div>
     </div>
 
-    <div class="video-container">
-        <!-- Main video player -->
-        <div class="video-player">
-            <video id="video-player" controls>
-                <!-- Video source will be set dynamically -->
-                <source id="video-source" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
-        <!-- Video details and recommended videos -->
-        <div class="video-details">
+    <div class="main-video-container">
+        <div class="video-container">
+            <video id="video-player" controls></video>
             <div class="video-title" id="video-title"></div>
             <div class="video-description" id="video-description"></div>
         </div>
+    </div>
 
-        <div class="recommended-videos" id="recommended-videos">
-            <!-- Recommended videos will be dynamically loaded here -->
-        </div>
+    <div class="related-videos" id="related-videos">
+        <!-- Related videos will be dynamically loaded here -->
     </div>
 
     <script>
@@ -180,49 +154,64 @@
             const videoId = urlParams.get('v');
 
             if (!videoId) {
-                document.body.innerHTML = '<h1 style="color: white;">Invalid video ID</h1>';
+                showError('Invalid video ID');
                 return;
             }
 
-            const response = await fetch('/videos.json');
-            const videoMetadata = await response.json();
-            const video = videoMetadata.find(v => v.id === videoId);
+            try {
+                // Try fetching videos.json from the root directory
+                const response = await fetch('/videos.json');  // Ensure the path is correct
+                console.log('Fetching /videos.json...');
+                if (!response.ok) {
+                    throw new Error(`Failed to load videos.json: ${response.statusText}`);
+                }
 
-            if (!video) {
-                document.body.innerHTML = '<h1 style="color: white;">Video not found</h1>';
-                return;
+                const videoMetadata = await response.json();
+                console.log('Fetched video metadata:', videoMetadata);  // Debugging output
+                const video = videoMetadata.find(v => v.id === videoId); // Correctly reference `v.id`
+
+                if (!video) {
+                    showError('Video not found');
+                    return;
+                }
+
+                // Set video details
+                document.getElementById('video-player').src = `https://media.generalgoldyt.com/videos/${video.id}.webm`;
+                document.getElementById('video-title').textContent = video.title;
+                document.getElementById('video-description').textContent = video.description;
+
+                // Load related videos
+                loadRelatedVideos(videoId, videoMetadata);  // Pass videoId to related videos function
+            } catch (error) {
+                console.error('Error loading video details:', error);  // Debugging output
+                showError('Failed to load video details');
             }
+        }
 
-            // Dynamically set the video source
-            const videoElement = document.getElementById('video-player');
-            document.getElementById('video-source').src = video.url;
-            videoElement.load(); // Make sure it reloads the video
+        function showError(message) {
+            document.body.innerHTML = `<div class="error-message">${message}</div>`;
+        }
 
-            // Set video details
-            document.getElementById('video-title').textContent = video.title;
-            document.getElementById('video-description').textContent = video.description;
+        function loadRelatedVideos(currentVideoId, videoMetadata) {
+            const relatedVideosContainer = document.getElementById('related-videos');
+            const relatedVideos = videoMetadata.filter(v => v.id !== currentVideoId).slice(0, 5);  // Exclude the current video
 
-            // Load recommended videos
-            const recommendedVideos = videoMetadata.filter(v => v.id !== videoId).slice(0, 5);
-            const recommendedVideosContainer = document.getElementById('recommended-videos');
-            recommendedVideosContainer.innerHTML = '';
-
-            recommendedVideos.forEach(recommended => {
-                const recommendedVideo = document.createElement('div');
-                recommendedVideo.className = 'recommended-video';
-                recommendedVideo.innerHTML = `
-                    <img src="${recommended.thumbnail}" alt="Thumbnail of ${recommended.title}">
+            relatedVideos.forEach(video => {
+                const relatedVideoElement = document.createElement('div');
+                relatedVideoElement.className = 'related-video';
+                relatedVideoElement.innerHTML = `
+                    <img src="${video.thumbnail}" alt="Thumbnail of ${video.title}">
                     <div class="info">
-                        <h3>${recommended.title}</h3>
-                        <p>${recommended.description}</p>
-                        <p class="duration">Duration: ${recommended.duration}</p>
+                        <h4>${video.title}</h4>
+                        <p>${video.duration}</p>
                     </div>
                 `;
-                recommendedVideo.addEventListener('click', () => {
-                    window.location.href = `/watch?v=${recommended.id}`;
+
+                relatedVideoElement.addEventListener('click', () => {
+                    window.location.href = `/watch?v=${video.id}`;
                 });
 
-                recommendedVideosContainer.appendChild(recommendedVideo);
+                relatedVideosContainer.appendChild(relatedVideoElement);
             });
         }
 
