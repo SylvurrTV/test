@@ -1,117 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClawTube</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #060c21;
-            color: white;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="./img/pfp.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap" rel="stylesheet">
+  <title>Leoshortnose Comics</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #6a3770;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    /* Header Styles */
+header {
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #6a3770;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 10;
+}
 
-        .video-card {
-            background: #1a2238;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
+/* Profile Picture - Rounded Rectangle */
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  background-image: url(./img/pfp.png); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px; /* Rounded rectangle with slightly rounded corners */
+  border: 3px solid pink;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin-right: 20px; /* Space between the profile picture and title */
+}
 
-        .video-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+.profile-pic:hover {
+  transform: scale(1.1); /* Grow slightly */
+  box-shadow: 0 0 10px pink; /* Glow effect */
+}
 
-        .video-card .info {
-            padding: 15px;
-        }
+/* Header Title Styles */
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Dosis', sans-serif;
+  color: #fff;
+  text-shadow:
+    -1px -1px 0 #ff82c6,
+     1px -1px 0 #ff82c6,
+    -1px  1px 0 #ff82c6,
+     1px  1px 0 #ff82c6;
+  margin: 0;
+  text-align: center;
+}
 
-        .video-card .info h3 {
-            margin: 0 0 10px;
-            font-size: 18px;
-        }
+/* Underline for Header */
+.header-underline {
+  width: 60%;
+  height: 4px;
+  background-color: #ff82c6;
+  margin-top: 1rem; /* Move the underline down */
+  border-radius: 2px;
+  position: absolute;
+  bottom: 0; /* Position it at the bottom of the header */
+}
 
-        .video-card .info p {
-            margin: 0;
-            font-size: 14px;
-            color: #cccccc;
-        }
 
-        .video-card .info .duration {
-            font-size: 12px;
-            color: #888;
-            margin-top: 10px;
-        }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
+    /* Profile Link */
+    .profile-pic a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+    /* Container for Comics */
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
 
-        .header h1 {
-            font-size: 2.5em;
-        }
-    </style>
+    /* Comic Card Styles */
+    .comic {
+      margin-bottom: 3rem;
+    }
+
+    .comic-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Dosis', sans-serif;
+      color: #fff;
+      text-shadow:
+        -1px -1px 0 #ff82c6,
+         1px -1px 0 #ff82c6,
+        -1px  1px 0 #ff82c6,
+         1px  1px 0 #ff82c6;
+    }
+
+    .comic img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .comic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .comic-date {
+      font-size: 1rem;
+      font-family: 'Dosis', sans-serif;
+      color: #fff;
+      text-shadow:
+        -1px -1px 0 #ff82c6,
+         1px -1px 0 #ff82c6,
+        -1px  1px 0 #ff82c6,
+         1px  1px 0 #ff82c6;
+    }
+
+    /* Dashed Divider for Comics */
+    .comic-divider {
+      margin: 2rem auto 0;
+      width: 60%;
+      height: 0;
+      border: none;
+      border-top: 3px dashed #ff82c6;
+      background-image: linear-gradient(to right, transparent 50%, #ff82c6 50%);
+      background-size: 20px 100%;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Welcome to the Video Library</h1>
-            <p>Explore our collection of amazing videos.</p>
-        </div>
-        <div class="grid" id="video-grid">
-            <!-- Videos will be dynamically loaded here -->
-        </div>
+
+  <header>
+    <!-- Profile Picture -->
+    <div class="profile-pic">
+      <a href="https://linktr.ee/leoshortnoseYT" target="_blank"></a>
+    </div>
+    <h1>Leoshortnose Comics</h1>
+    <div class="header-underline"></div>
+  </header>
+
+  <div class="container">
+    <div class="comic" id="ceilingcat1">
+      <div class="comic-header">
+        <div class="comic-title">The Ceiling Cat #1</div>
+        <div class="comic-date">9/5/25</div>
+      </div>
+      <img src="./img/ceilingcat1.png" alt="Ceiling Cat 1" />
+      <div class="comic-divider"></div>
     </div>
 
-    <script>
-        const videoBaseUrl = "https://media.sylvurr.com/videos/";
+    <div class="comic" id="mothsatadiner">
+      <div class="comic-header">
+        <div class="comic-title">Moths At A Diner</div>
+        <div class="comic-date">21/10/24</div>
+      </div>
+      <img src="./img/mothsatadiner.png" alt="Moths At A Diner" />
+      <div class="comic-divider"></div>
+    </div>
 
-        async function loadVideos() {
-            const response = await fetch('videos.json');
-            const videoMetadata = await response.json();
+    <div class="comic" id="leilawonderphone">
+      <div class="comic-header">
+        <div class="comic-title">How Leila Wonder Fixes A Phone</div>
+        <div class="comic-date">20/12/23</div>
+      </div>
+      <img src="./img/howleilawonderfixesaphone.png" alt="How Leila Wonder Fixes A Phone" />
+      <div class="comic-divider"></div>
+    </div>
 
-            const grid = document.getElementById('video-grid');
+    <!-- Add more comics here -->
+  </div>
 
-            videoMetadata.forEach(video => {
-                const videoCard = document.createElement('div');
-                videoCard.className = 'video-card';
-                videoCard.innerHTML = `
-                    <img src="${video.thumbnail}" alt="Thumbnail of ${video.title}">
-                    <div class="info">
-                        <h3>${video.title}</h3>
-                        <p>${video.description}</p>
-                        <p class="duration">Duration: ${video.duration}</p>
-                    </div>
-                `;
+  <script>
+    window.addEventListener('hashchange', () => {
+      const targetId = location.hash.substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
 
-                videoCard.addEventListener('click', () => {
-                    window.location.href = `/watch?v=${video.id}`;
-                });
+    window.addEventListener('load', () => {
+      const targetId = location.hash.substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  </script>
 
-                grid.appendChild(videoCard);
-            });
-        }
-
-        // Load videos on page load
-        document.addEventListener('DOMContentLoaded', loadVideos);
-    </script>
 </body>
 </html>
