@@ -1,7 +1,7 @@
 [
   {
     "name": "Donegal",
-    "idColor": "#78eb13",
+    "idColor": "#77eb13",
     "owner": "ire"
   },
   {
@@ -73,5 +73,5 @@
     "name": "Inverness",
     "idColor": "#fea676",
     "owner": "uk"
-  },
+  }
 ]
