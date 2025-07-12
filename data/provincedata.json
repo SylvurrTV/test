@@ -21,7 +21,7 @@
   },
   {
     "name": "Cork",
-    "idColor": "#64c139",
+    "idColor": "#65c139",
     "owner": "ire"
   },
   {
@@ -31,7 +31,7 @@
   },
   {
     "name": "Laois",
-    "idColor": "#ea2012",
+    "idColor": "#ea2212",
     "owner": "ire"
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "name": "Derry",
-    "idColor": "#f63e4d",
+    "idColor": "#f63e4e",
     "owner": "uk"
   },
   {
@@ -56,7 +56,7 @@
   },
   {
     "name": "Isle of Mann",
-    "idColor": "#6f84eb",
+    "idColor": "#6f83eb",
     "owner": "uk"
   },
   {
@@ -72,6 +72,111 @@
   {
     "name": "Inverness",
     "idColor": "#fea676",
+    "owner": "uk"
+  },
+  {
+    "name": "Aberdeen",
+    "idColor": "#7b9f27",
+    "owner": "uk"
+  },
+  {
+    "name": "Edinburgh",
+    "idColor": "#faf262",
+    "owner": "uk"
+  },
+  {
+    "name": "Glasgow",
+    "idColor": "#79459d",
+    "owner": "uk"
+  },
+  {
+    "name": "Newcastle",
+    "idColor": "#f898d8",
+    "owner": "uk"
+  },
+  {
+    "name": "Carlisle",
+    "idColor": "#7337ff",
+    "owner": "uk"
+  },
+  {
+    "name": "York",
+    "idColor": "#759189",
+    "owner": "uk"
+  },
+  {
+    "name": "Liverpool",
+    "idColor": "#eed626",
+    "owner": "uk"
+  },
+  {
+    "name": "Sheffield",
+    "idColor": "#6bcfd7",
+    "owner": "uk"
+  },
+  {
+    "name": "Hull",
+    "idColor": "#6d2961",
+    "owner": "uk"
+  },
+  {
+    "name": "Norwich",
+    "idColor": "#e2baea",
+    "owner": "uk"
+  },
+  {
+    "name": "London",
+    "idColor": "#de06d6",
+    "owner": "uk"
+  },
+  {
+    "name": "Dover",
+    "idColor": "#5bff87",
+    "owner": "uk"
+  },
+  {
+    "name": "Oxford",
+    "idColor": "#e06060",
+    "owner": "uk"
+  },
+  {
+    "name": "Birmingham",
+    "idColor": "#e41474",
+    "owner": "uk"
+  },
+  {
+    "name": "Southampton",
+    "idColor": "#5d5911",
+    "owner": "uk"
+  },
+  {
+    "name": "Isle of Wight",
+    "idColor": "#59a5fd",
+    "owner": "uk"
+  },
+  {
+    "name": "Bristol",
+    "idColor": "#dcac4c",
+    "owner": "uk"
+  },
+  {
+    "name": "Plymouth",
+    "idColor": "#da52c2",
+    "owner": "uk"
+  },
+  {
+    "name": "Wrexham",
+    "idColor": "#e66efe",
+    "owner": "uk"
+  },
+  {
+    "name": "Angelsey",
+    "idColor": "#671bc3",
+    "owner": "uk"
+  },
+  {
+    "name": "Cardiff",
+    "idColor": "#610d25",
     "owner": "uk"
   }
 ]
