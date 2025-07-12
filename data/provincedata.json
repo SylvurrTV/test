@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Donegal",
+    "idColor": "#78eb13",
+    "owner": "ire"
+  },
+  {
+    "name": "Sligo",
+    "idColor": "#71dd75",
+    "owner": "ire"
+  },
+  {
+    "name": "Galway",
+    "idColor": "#69754d",
+    "owner": "ire"
+  }
+  {
+    "name": "Limerick",
+    "idColor": "#6367af",
+    "owner": "ire"
+  },
+  {
+    "name": "Cork",
+    "idColor": "#64c139",
+    "owner": "ire"
+  },
+  {
+    "name": "Dublin",
+    "idColor": "#e8c888",
+    "owner": "ire"
+  },
+  {
+    "name": "Laois",
+    "idColor": "#ea2012",
+    "owner": "ire"
+  },
+  {
+    "name": "Meath",
+    "idColor": "#ec7c9c",
+    "owner": "ire"
+  },
+  {
+    "name": "Monaghan",
+    "idColor": "#f030b0",
+    "owner": "ire"
+  },
+  {
+    "name": "Derry",
+    "idColor": "#f63e4d",
+    "owner": "uk"
+  },
+  {
+    "name": "Belfast",
+    "idColor": "#f4e4c4",
+    "owner": "uk"
+  },
+  {
+    "name": "Isle of Mann",
+    "idColor": "#6f84eb",
+    "owner": "uk"
+  },
+  {
+    "name": "Hebrides",
+    "idColor": "#7df9b1",
+    "owner": "uk"
+  },
+  {
+    "name": "Orkney",
+    "idColor": "#7f533b",
+    "owner": "uk"
+  },
+  {
+    "name": "Inverness",
+    "idColor": "#fea676",
+    "owner": "uk"
+  },
+]
